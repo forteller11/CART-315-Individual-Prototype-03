@@ -6,6 +6,12 @@ public class CamerasController : MonoBehaviour
 {
     public Camera LeftEye;
     public Camera RightEye;
+
+    public RectTransform LeftMask;
+    public RectTransform RightMask;
+
+    public RectTransform LeftImage;
+    public RectTransform RightImage;
     
     [Header("Eye Widths")]
     [Range(0,1)]
@@ -39,11 +45,15 @@ public class CamerasController : MonoBehaviour
     
     private float _amountCentered = 0.5f; //0 == side, 1 == centered
     private Rigidbody _rigidbody;
+    private float _width;
+    private float _height;
 
     
     void Awake()
     { 
         _rigidbody = GetComponent<Rigidbody>();
+        _width = Display.main.renderingWidth;
+        _height = Display.main.renderingHeight;
     }
     
     void Update()
@@ -54,7 +64,6 @@ public class CamerasController : MonoBehaviour
     
     void PositionCameras()
     {
-        //_amountCentered = 0f;
         float displaySize = Mathf.Lerp(SideDisplayWidth, CenterDisplayWidth, _amountCentered);
 
         float centerLeftPosition = 0.5f;
@@ -63,11 +72,14 @@ public class CamerasController : MonoBehaviour
         float sideRightPosition = 1f - displaySize;
 
 
-        float leftPosition = Mathf.Lerp(sideLeftPosition, centerLeftPosition, _amountCentered);
-        float rightPosition = Mathf.Lerp(sideRightPosition, centerRightPosition, _amountCentered);
-            
-        LeftEye.rect = new Rect(leftPosition,0f, displaySize, 1f);
-        RightEye.rect = new Rect(rightPosition,0f, displaySize, 1f);
+        float leftPosition = Mathf.Lerp(sideLeftPosition, centerLeftPosition, _amountCentered) * _width;
+        float rightPosition = Mathf.Lerp(sideRightPosition, centerRightPosition, _amountCentered) * _width;
+
+        LeftMask.transform.position = new Vector3(leftPosition,0f,0f);
+        RightMask.transform.position = new Vector3(rightPosition,0f,0f);
+        
+//        LeftMask.transform = new Rect(leftPosition,0f, displaySize, 1f);
+//        RightMask = new Rect(rightPosition,0f, displaySize, 1f);
 
         float rotationOffset = Mathf.Lerp(SideRotationOffset, CenterRotationOffset, _amountCentered);
         LeftEye.transform.localRotation = Quaternion.Euler(0f, -rotationOffset, 0f);
@@ -77,6 +89,10 @@ public class CamerasController : MonoBehaviour
         float fov = Mathf.Lerp(SideFov, CenterFov, _amountCentered);
         LeftEye.fieldOfView = fov;
         RightEye.fieldOfView = fov;
+        
+        LeftImage.position = Vector3.zero;
+        RightImage.position = Vector3.zero;
+ 
     }
 
     private void GetAmountToCenter()
