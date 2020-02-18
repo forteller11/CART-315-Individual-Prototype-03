@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Charly\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Charly\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Prototype 3.1872098553.00" t="ExcludeRecursive" />
+    <e p="D:\MOVE\Homework\Concordia Year 02\Semester 1\CART 315 -- Digital Prototyping\Prototype 3" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="PerspectiveShader.shader" t="Include" />
+        <e p="RotatePlayer" t="Include">
+          <e p="CamerasController.cs" t="Include" />
+          <e p="FpsController.cs" t="Include" />
+          <e p="PlayerControls.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Prototype 3.sln" t="IncludeFlat" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
