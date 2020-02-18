@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e406e160-8e18-4e9c-bf83-309f3d4ed400" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Prototype 3/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Prototype 3/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Prototype 3/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Prototype 3/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Prototype 3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Prototype 3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RotatePlayer/FpsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RotatePlayer/FpsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RotatePlayer/CamerasController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RotatePlayer/CamerasController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +34,7 @@
         <option value="$PROJECT_DIR$/Assets/CamerasController.cs" />
         <option value="$PROJECT_DIR$/Assets/RotatePlayer/Rotate.cs" />
         <option value="$PROJECT_DIR$/Assets/RotatePlayer/FpsController.cs" />
+        <option value="$PROJECT_DIR$/Assets/RotatePlayer/CamerasController.cs" />
       </list>
     </option>
   </component>
@@ -83,7 +84,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1582007360132</updated>
-      <workItem from="1582007361489" duration="5341000" />
+      <workItem from="1582007361489" duration="7864000" />
     </task>
     <servers />
   </component>
