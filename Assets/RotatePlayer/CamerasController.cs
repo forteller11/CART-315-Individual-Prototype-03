@@ -64,22 +64,30 @@ public class CamerasController : MonoBehaviour
     
     void PositionCameras()
     {
+        
         float displaySize = Mathf.Lerp(SideDisplayWidth, CenterDisplayWidth, _amountCentered);
 
-        float centerLeftPosition = 0.5f;
-        float centerRightPosition = centerLeftPosition;
+        float centerLeftPosition = _width/2 - displaySize/2f;
+        float centerRightPosition = _width/2 + displaySize/2f;
         float sideLeftPosition = 0f;
-        float sideRightPosition = 1f - displaySize;
+        float sideRightPosition = _width - displaySize;
 
 
-        float leftPosition = Mathf.Lerp(sideLeftPosition, centerLeftPosition, _amountCentered) * _width;
-        float rightPosition = Mathf.Lerp(sideRightPosition, centerRightPosition, _amountCentered) * _width;
-
+        float leftPosition = Mathf.Lerp(-sideLeftPosition, centerLeftPosition, _amountCentered);
+        float rightPosition = Mathf.Lerp(-sideRightPosition, centerRightPosition, _amountCentered);
+        
+        //in pixel coords
         LeftMask.transform.position = new Vector3(leftPosition,0f,0f);
         RightMask.transform.position = new Vector3(rightPosition,0f,0f);
         
-//        LeftMask.transform = new Rect(leftPosition,0f, displaySize, 1f);
-//        RightMask = new Rect(rightPosition,0f, displaySize, 1f);
+        //in normalized coords
+        LeftMask.transform.localScale = new Vector3(displaySize,1,1f);
+        RightMask.transform.localScale = new Vector3(displaySize,1,1f);
+        
+        //in normalized coords
+        LeftImage.transform.localScale = new Vector3(1/displaySize,1,1f);
+        RightImage.transform.localScale = new Vector3(1/displaySize,1,1f);
+        
 
         float rotationOffset = Mathf.Lerp(SideRotationOffset, CenterRotationOffset, _amountCentered);
         LeftEye.transform.localRotation = Quaternion.Euler(0f, -rotationOffset, 0f);
@@ -90,9 +98,10 @@ public class CamerasController : MonoBehaviour
         LeftEye.fieldOfView = fov;
         RightEye.fieldOfView = fov;
         
-        LeftImage.position = Vector3.zero;
-        RightImage.position = Vector3.zero;
+        //LeftImage.position = Vector3.zero;
+        //RightImage.position = Vector3.zero;
  
+
     }
 
     private void GetAmountToCenter()
