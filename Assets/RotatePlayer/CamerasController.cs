@@ -14,10 +14,10 @@ public class CamerasController : MonoBehaviour
     public RectTransform RightImage;
     
     [Header("Eye Widths")]
-    [Range(0,1)]
-    public float SideDisplayWidth = 0.2f;
-    [Range(0,1)]
-    public float CenterDisplayWidth = 0.5f;
+    [Range(0,0.5f)]
+    public float SideDisplayWidth = 0.1f;
+    [Range(0,0.5f)]
+    public float CenterDisplayWidth = 0.05f;
 
     [Header("Rotation Offset")]
     [Range(0,180f)]
@@ -32,10 +32,10 @@ public class CamerasController : MonoBehaviour
     public float CenterFov = 50f;
     
     [Header("Transition")]
-    [Range(0,1)]
-    public float AmountToLerpToCenter = 0.1f;
-    [Range(0,1)]
-    public float AmountToLerpToSides = 0.01f;
+    [Range(0, 0.5f)] public float AmountToLerpToCenter = 0.1f;
+    [Range(0, 0.1f)] public float AmountToLerpToSides = 0.01f;
+    [Range(0, 0.1f)] public float MinAmountToChange = 0.0002f;
+    
     
     //lerp
     [Header("Velocitys")]
@@ -43,7 +43,7 @@ public class CamerasController : MonoBehaviour
     public float VelForCenter = 0f;
     
     
-    private float _amountCentered = 0.5f; //0 == side, 1 == centered
+    private float _amountCentered = 1.0f; //0 == side, 1 == centered
     private Rigidbody _rigidbody;
     private float _width;
     private float _height;
@@ -68,8 +68,8 @@ public class CamerasController : MonoBehaviour
         float displaySize = Mathf.Lerp(SideDisplayWidth, CenterDisplayWidth, _amountCentered);
         float displaySizePixels = displaySize * _width;
         
-        float centerLeftPosition = _width/2 - displaySizePixels/2f;
-        float centerRightPosition = _width/2 + displaySizePixels/2f;
+        float centerLeftPosition = _width/2 - displaySizePixels;
+        float centerRightPosition = _width/2 ;
         float sideLeftPosition = 0f;
         float sideRightPosition = _width - displaySizePixels;
 
@@ -109,10 +109,26 @@ public class CamerasController : MonoBehaviour
     {
         float targetAmountToCenter = Mathf.Lerp(1f,0f,(_rigidbody.velocity.magnitude - VelForCenter)/VelForSide);
         if (targetAmountToCenter > _amountCentered) //if going towards center
-            _amountCentered = Mathf.Lerp(_amountCentered, targetAmountToCenter, AmountToLerpToCenter);
+        {
+            float newCentered = Mathf.Lerp(_amountCentered, targetAmountToCenter, AmountToLerpToCenter);
+            float deltaBetweenFrames = Mathf.Abs(newCentered - _amountCentered);
+            if (deltaBetweenFrames < MinAmountToChange)
+                _amountCentered += MinAmountToChange;
+            else
+                _amountCentered = newCentered;
+        }
+
         else
-            _amountCentered = Mathf.Lerp(_amountCentered, targetAmountToCenter, AmountToLerpToSides);
-            
+        {
+            float newCentered = Mathf.Lerp(_amountCentered, targetAmountToCenter, AmountToLerpToSides);
+            float deltaBetweenFrames = Mathf.Abs(newCentered - _amountCentered);
+            if (deltaBetweenFrames < MinAmountToChange)
+                _amountCentered -= MinAmountToChange;
+            else
+                _amountCentered = newCentered;
+        }
+        
+        _amountCentered = Mathf.Clamp(_amountCentered,0,1f);
         
 
     }
