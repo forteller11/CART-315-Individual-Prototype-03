@@ -11,6 +11,7 @@
           <e p="CamerasController.cs" t="Include" />
           <e p="FpsController.cs" t="Include" />
           <e p="PlayerControls.cs" t="Include" />
+          <e p="Rotate.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
