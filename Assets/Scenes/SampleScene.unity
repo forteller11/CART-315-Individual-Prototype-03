@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: ea8368281ce55264dbabcb5d126cb150, type: 2}
-  m_Color: {r: 0.78230584, g: 1, b: 0.7688679, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -769,6 +769,7 @@ GameObject:
   - component: {fileID: 1222891466}
   - component: {fileID: 1222891465}
   - component: {fileID: 1222891464}
+  - component: {fileID: 1222891467}
   m_Layer: 5
   m_Name: MaskLeft
   m_TagString: Untagged
@@ -822,7 +823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.6179246, g: 0.9837044, b: 1, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -845,6 +846,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222891462}
   m_CullTransparentMesh: 0
+--- !u!114 &1222891467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222891462}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4ab43dd40b40c458c9a7a807363204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToMask: {fileID: 587545631}
+  m_ShowMaskGraphic: 1
 --- !u!1 &1247952053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,7 +1274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 0.6367924, b: 0.6367924, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1414,14 +1429,14 @@ MonoBehaviour:
   RightMask: {fileID: 1637543083}
   LeftImage: {fileID: 587545631}
   RightImage: {fileID: 2008593721}
-  SideDisplayWidth: 0.168
-  CenterDisplayWidth: 0.059
+  SideDisplayWidth: 0.259
+  CenterDisplayWidth: 0.046
   SideRotationOffset: 50.1
   CenterRotationOffset: 0
   SideFov: 110
   CenterFov: 80
-  AmountToLerpToCenter: 0.04
-  AmountToLerpToSides: 0.084
+  AmountToLerpToCenter: 0.005
+  AmountToLerpToSides: 0.068
   VelForSide: 0.5
   VelForCenter: 0
 --- !u!81 &1829038854
@@ -1498,7 +1513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 2df17b4f1d0957a499656c514e59807b, type: 2}
-  m_Color: {r: 0.78230584, g: 1, b: 0.7688679, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

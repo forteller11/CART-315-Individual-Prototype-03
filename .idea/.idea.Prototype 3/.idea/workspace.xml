@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e406e160-8e18-4e9c-bf83-309f3d4ed400" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Prototype 3/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Prototype 3/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Prototype 3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Prototype 3/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RotatePlayer/CamerasController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RotatePlayer/CamerasController.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +32,8 @@
         <option value="$PROJECT_DIR$/Assets/RotatePlayer/Rotate.cs" />
         <option value="$PROJECT_DIR$/Assets/RotatePlayer/FpsController.cs" />
         <option value="C:/Program Files/Unity/Hub/Editor/2019.3.0f3/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Mask.cs" />
-        <option value="$PROJECT_DIR$/Assets/RotatePlayer/CamerasController.cs" />
         <option value="$PROJECT_DIR$/Assets/Assets/CustomMask.cs" />
+        <option value="$PROJECT_DIR$/Assets/RotatePlayer/CamerasController.cs" />
       </list>
     </option>
   </component>
@@ -86,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1582007360132</updated>
       <workItem from="1582007361489" duration="8528000" />
-      <workItem from="1582055990896" duration="4055000" />
+      <workItem from="1582055990896" duration="4340000" />
     </task>
     <servers />
   </component>
