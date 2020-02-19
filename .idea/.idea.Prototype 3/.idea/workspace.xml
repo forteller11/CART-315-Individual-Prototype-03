@@ -18,6 +18,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CamerasController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Assets/CustomMask.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DF6C316C-84A0-485D-A293-9F895A90125C/51/0ba00b40/IMaskable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D22F8E7-1133-418C-87C7-B26EA181F3E3/7b/7a63d3f3/Rect.cs" root0="SKIP_HIGHLIGHTING" />
@@ -91,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1582007360132</updated>
       <workItem from="1582007361489" duration="8528000" />
-      <workItem from="1582055990896" duration="12758000" />
+      <workItem from="1582055990896" duration="13452000" />
     </task>
     <servers />
   </component>

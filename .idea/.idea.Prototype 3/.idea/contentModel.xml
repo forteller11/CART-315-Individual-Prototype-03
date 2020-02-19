@@ -17,6 +17,9 @@
             </e>
           </e>
         </e>
+        <e p="PBR Ground Materials #1 [Dirt&amp; Grass]" t="Include">
+          <e p="Documentation.txt" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="CamerasController.cs" t="Include" />
           <e p="FpsController.cs" t="Include" />
