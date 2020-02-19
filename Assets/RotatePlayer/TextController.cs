@@ -6,45 +6,85 @@ using UnityEngine;
 
 public class TextController : MonoBehaviour
 {
-    public List<TextMeshPro> texts;
+    public List<TextMeshProUGUI> texts;
     
     public int FramesToAppear = 1;
     public int FramesToFade = 30;
     private float _toIncreaseEachFrame { get => 1f / FramesToAppear; }
     private float _toDecreaseEachFrame { get => 1f / FramesToFade; }
     public float CurrentAlpha = 0;
+    public bool ShowTextWhenCenterIsGreaterThan = true;
+    [Range(0, 1)] public float CenterThreshold = 0.5f;
     
     private Coroutine _currentCoroutine;
 
     private void OnTriggerEnter(Collider other)
     {
-        StopCoroutine(_currentCoroutine);
-        _currentCoroutine = StartCoroutine( "Appear");
+        if (_currentCoroutine != null)
+            StopCoroutine(_currentCoroutine);
     }
     
     private void OnTriggerExit(Collider other)
     {
-        StopCoroutine(_currentCoroutine);
+        if (_currentCoroutine != null)
+            StopCoroutine(_currentCoroutine);
         _currentCoroutine = StartCoroutine( "Fade");
+    }
+
+    private void Start()
+    {
+        foreach (var text in texts)
+            text.alpha = CurrentAlpha;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        var camController = other.GetComponent<CamerasController>();
+        if (camController == null)
+            return;
+        
+        if (ShowTextWhenCenterIsGreaterThan)
+        {
+            if (camController.AmountCentered >= CenterThreshold)
+                ContinueAppearence();
+            else
+                ContinueFade();
+        }
+        else
+        {
+            if (camController.AmountCentered < CenterThreshold)
+                ContinueAppearence();
+            else
+                ContinueFade();
+        }
+        
+    }
+
+    void ContinueAppearence()
+    {
+        Debug.Log("Continue");
+        CurrentAlpha += _toIncreaseEachFrame;
+        CurrentAlpha = Mathf.Clamp01(CurrentAlpha);
+        foreach (var text in texts)
+            text.alpha = CurrentAlpha;
+    }
+    
+    void ContinueFade()
+    {
+        Debug.Log("Fade");
+        CurrentAlpha -= _toDecreaseEachFrame;
+        CurrentAlpha = Mathf.Clamp01(CurrentAlpha);
+        foreach (var text in texts)
+            text.alpha = CurrentAlpha;
     }
 
     IEnumerator Fade() 
     {
-        for (float a = CurrentAlpha; a > 0; a -= _toDecreaseEachFrame)
+        Debug.Log("Fade");
+        for (; CurrentAlpha > 0; CurrentAlpha -= _toDecreaseEachFrame)
         {
             foreach (var text in texts)
-                text.alpha = a;
-            
-            yield return null;
-        }
-    }
-    
-    IEnumerator Appear() 
-    {
-        for (float a = CurrentAlpha; a < 1; a += _toIncreaseEachFrame)
-        {
-            foreach (var text in texts)
-                text.alpha = a;
+                text.alpha = CurrentAlpha;
             
             yield return null;
         }

@@ -43,8 +43,7 @@ public class CamerasController : MonoBehaviour
     public float VelForSide = 0.5f;
     public float VelForCenter = 0f;
     
-    
-    private float _amountCentered = 1.0f; //0 == side, 1 == centered
+    public float AmountCentered = 1.0f; //0 == side, 1 == centered
     private Rigidbody _rigidbody;
     private float _width;
     private float _height;
@@ -66,7 +65,7 @@ public class CamerasController : MonoBehaviour
     void PositionCameras()
     {
         
-        float displaySize = Mathf.Lerp(SideDisplayWidth, CenterDisplayWidth, _amountCentered);
+        float displaySize = Mathf.Lerp(SideDisplayWidth, CenterDisplayWidth, AmountCentered);
         float displaySizePixels = displaySize * _width;
         
         float centerLeftPosition = _width/2 - displaySizePixels;
@@ -75,8 +74,8 @@ public class CamerasController : MonoBehaviour
         float sideRightPosition = _width - displaySizePixels;
 
 
-        float leftPosition = Mathf.Lerp(sideLeftPosition, centerLeftPosition, _amountCentered);
-        float rightPosition = Mathf.Lerp(sideRightPosition, centerRightPosition, _amountCentered);
+        float leftPosition = Mathf.Lerp(sideLeftPosition, centerLeftPosition, AmountCentered);
+        float rightPosition = Mathf.Lerp(sideRightPosition, centerRightPosition, AmountCentered);
         
         //in pixel coords
         LeftMask.transform.position = new Vector3(leftPosition,0f,0f);
@@ -93,12 +92,12 @@ public class CamerasController : MonoBehaviour
         RightImage.transform.localScale = new Vector3(1/displaySize,1,1f);
         
 
-        float rotationOffset = Mathf.Lerp(SideRotationOffset, CenterRotationOffset, _amountCentered);
+        float rotationOffset = Mathf.Lerp(SideRotationOffset, CenterRotationOffset, AmountCentered);
         LeftEye.transform.localRotation = Quaternion.Euler(0f, -rotationOffset, 0f);
         RightEye.transform.localRotation = Quaternion.Euler(0f, rotationOffset, 0f);
         
         //POV
-        float fov = Mathf.Lerp(SideFov, CenterFov, _amountCentered);
+        float fov = Mathf.Lerp(SideFov, CenterFov, AmountCentered);
         LeftEye.fieldOfView = fov;
         RightEye.fieldOfView = fov;
         
@@ -109,27 +108,27 @@ public class CamerasController : MonoBehaviour
     private void GetAmountToCenter()
     {
         float targetAmountToCenter = Mathf.Lerp(1f,0f,(_rigidbody.velocity.magnitude - VelForCenter)/VelForSide);
-        if (targetAmountToCenter > _amountCentered) //if going towards center
+        if (targetAmountToCenter > AmountCentered) //if going towards center
         {
-            float newCentered = Mathf.Lerp(_amountCentered, targetAmountToCenter, AmountToLerpToCenter);
-            float deltaBetweenFrames = Mathf.Abs(newCentered - _amountCentered);
+            float newCentered = Mathf.Lerp(AmountCentered, targetAmountToCenter, AmountToLerpToCenter);
+            float deltaBetweenFrames = Mathf.Abs(newCentered - AmountCentered);
             if (deltaBetweenFrames < MinAmountToChange)
-                _amountCentered += MinAmountToChange;
+                AmountCentered += MinAmountToChange;
             else
-                _amountCentered = newCentered;
+                AmountCentered = newCentered;
         }
 
         else
         {
-            float newCentered = Mathf.Lerp(_amountCentered, targetAmountToCenter, AmountToLerpToSides);
-            float deltaBetweenFrames = Mathf.Abs(newCentered - _amountCentered);
+            float newCentered = Mathf.Lerp(AmountCentered, targetAmountToCenter, AmountToLerpToSides);
+            float deltaBetweenFrames = Mathf.Abs(newCentered - AmountCentered);
             if (deltaBetweenFrames < MinAmountToChange)
-                _amountCentered -= MinAmountToChange;
+                AmountCentered -= MinAmountToChange;
             else
-                _amountCentered = newCentered;
+                AmountCentered = newCentered;
         }
         
-        _amountCentered = Mathf.Clamp(_amountCentered,0,1f);
+        AmountCentered = Mathf.Clamp(AmountCentered,0,1f);
         
 
     }
