@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class CamerasController : MonoBehaviour
 {
     public Camera LeftEye;
@@ -35,9 +35,8 @@ public class CamerasController : MonoBehaviour
     [Header("Transition")]
     [Range(0, 0.5f)] public float AmountToLerpToCenter = 0.1f;
     [Range(0, 0.1f)] public float AmountToLerpToSides = 0.01f;
-    [Range(0, 0.1f)] public float MinAmountToChange = 0.0002f;
-    
-    
+
+
     //lerp
     [Header("Velocitys")]
     public float VelForSide = 0.5f;
@@ -47,10 +46,12 @@ public class CamerasController : MonoBehaviour
     private Rigidbody _rigidbody;
     private float _width;
     private float _height;
+    private float _deltaTimeCorrection = 0.02f;
 
     
     void Awake()
-    { 
+    {
+        AmountCentered = 1f;
         _rigidbody = GetComponent<Rigidbody>();
         _width = Display.main.renderingWidth;
         _height = Display.main.renderingHeight;
@@ -110,25 +111,17 @@ public class CamerasController : MonoBehaviour
         float targetAmountToCenter = Mathf.Lerp(1f,0f,(_rigidbody.velocity.magnitude - VelForCenter)/VelForSide);
         if (targetAmountToCenter > AmountCentered) //if going towards center
         {
-            float newCentered = Mathf.Lerp(AmountCentered, targetAmountToCenter, AmountToLerpToCenter);
-            float deltaBetweenFrames = Mathf.Abs(newCentered - AmountCentered);
-            if (deltaBetweenFrames < MinAmountToChange)
-                AmountCentered += MinAmountToChange;
-            else
-                AmountCentered = newCentered;
+            float newCentered = Mathf.Lerp(AmountCentered, targetAmountToCenter, AmountToLerpToCenter * Time.deltaTime/_deltaTimeCorrection);
+            AmountCentered = newCentered;
         }
 
         else
         {
-            float newCentered = Mathf.Lerp(AmountCentered, targetAmountToCenter, AmountToLerpToSides);
-            float deltaBetweenFrames = Mathf.Abs(newCentered - AmountCentered);
-            if (deltaBetweenFrames < MinAmountToChange)
-                AmountCentered -= MinAmountToChange;
-            else
-                AmountCentered = newCentered;
+            float newCentered = Mathf.Lerp(AmountCentered, targetAmountToCenter, AmountToLerpToSides * Time.deltaTime/_deltaTimeCorrection);
+            AmountCentered = newCentered;
         }
         
-        AmountCentered = Mathf.Clamp(AmountCentered,0,1f);
+        //AmountCentered = Mathf.Clamp(AmountCentered,0,1f);
         
 
     }

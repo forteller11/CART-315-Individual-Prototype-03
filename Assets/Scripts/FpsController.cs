@@ -37,9 +37,9 @@ public class FpsController : MonoBehaviour
         _rigidbody.AddTorque(new Vector3(0f, inputAngular.x,0f));
 
         Vector3 rot = transform.rotation.eulerAngles;
-        transform.rotation = Quaternion.Euler(rot.x, rot.y, 0f);
+        transform.rotation = Quaternion.Euler(0, rot.y, 0f);
 
-        _rigidbody.AddRelativeForce(new Vector3(inputLinear.x, 0, inputLinear.y));
+        _rigidbody.AddRelativeForce(new Vector3(0, 0, inputLinear.y));
 
     }
 

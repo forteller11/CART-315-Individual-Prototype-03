@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/RotatePlayer/PlayerControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/PlayerControls.inputactions'
 
 using System;
 using System.Collections;
@@ -65,7 +65,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""id"": ""2d1c832b-5022-40a1-9122-d48dd9852ffe"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": """",
                     ""action"": ""Translate"",
                     ""isComposite"": false,
@@ -230,7 +230,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""id"": ""c5422168-db2d-4f2e-9acb-06301af98b0c"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": """",
                     ""action"": ""Rotate"",
                     ""isComposite"": false,

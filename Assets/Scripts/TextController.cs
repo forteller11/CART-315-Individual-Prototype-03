@@ -15,6 +15,8 @@ public class TextController : MonoBehaviour
     public bool ShowTextWhenCenterIsGreaterThan = true;
     [Range(0, 1)]
     public float CenterThreshold = 0.5f;
+
+    private float _deltaTimeCorrection = 0.02f;
     
     private float _toIncreaseEachFrame { get => 1f / FramesToAppear; }
     private float _toDecreaseEachFrame { get => 1f / FramesToFade; }
@@ -66,8 +68,7 @@ public class TextController : MonoBehaviour
 
     void ContinueAppearence()
     {
-        Debug.Log("Continue");
-        CurrentAlpha += _toIncreaseEachFrame;
+        CurrentAlpha += _toIncreaseEachFrame * Time.deltaTime/_deltaTimeCorrection;
         CurrentAlpha = Mathf.Clamp01(CurrentAlpha);
         foreach (var text in texts)
             text.alpha = CurrentAlpha;
@@ -75,8 +76,7 @@ public class TextController : MonoBehaviour
     
     void ContinueFade()
     {
-        Debug.Log("Fade");
-        CurrentAlpha -= _toDecreaseEachFrame;
+        CurrentAlpha -= _toDecreaseEachFrame * Time.deltaTime/_deltaTimeCorrection;
         CurrentAlpha = Mathf.Clamp01(CurrentAlpha);
         foreach (var text in texts)
             text.alpha = CurrentAlpha;
@@ -84,8 +84,7 @@ public class TextController : MonoBehaviour
 
     IEnumerator Fade() 
     {
-        Debug.Log("Fade");
-        for (; CurrentAlpha > 0; CurrentAlpha -= _toDecreaseEachFrame)
+        for (; CurrentAlpha > 0; CurrentAlpha -= _toDecreaseEachFrame * Time.deltaTime/_deltaTimeCorrection)
         {
             foreach (var text in texts)
                 text.alpha = CurrentAlpha;
