@@ -10,7 +10,14 @@
           <e p="CustomMask.cs" t="Include" />
           <e p="PerspectiveShader.shader" t="Include" />
         </e>
-        <e p="RotatePlayer" t="Include">
+        <e p="Assets MOOD WARE" t="Include">
+          <e p="_MW Skybox" t="Include">
+            <e p="Documentation" t="Include">
+              <e p="Documentation City Street Skyboxes Vol. 1.txt" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
           <e p="CamerasController.cs" t="Include" />
           <e p="FpsController.cs" t="Include" />
           <e p="PlayerControls.cs" t="Include" />

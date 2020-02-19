@@ -10,11 +10,15 @@ public class TextController : MonoBehaviour
     
     public int FramesToAppear = 1;
     public int FramesToFade = 30;
-    private float _toIncreaseEachFrame { get => 1f / FramesToAppear; }
-    private float _toDecreaseEachFrame { get => 1f / FramesToFade; }
+    [Range(0, 1f)]
     public float CurrentAlpha = 0;
     public bool ShowTextWhenCenterIsGreaterThan = true;
-    [Range(0, 1)] public float CenterThreshold = 0.5f;
+    [Range(0, 1)]
+    public float CenterThreshold = 0.5f;
+    
+    private float _toIncreaseEachFrame { get => 1f / FramesToAppear; }
+    private float _toDecreaseEachFrame { get => 1f / FramesToFade; }
+    
     
     private Coroutine _currentCoroutine;
 
